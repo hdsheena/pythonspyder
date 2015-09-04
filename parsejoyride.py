@@ -34,6 +34,9 @@ for item in content:
     print item
     number_of_item = content.index(item)
     print number_of_item
-    new_data[item] = dates[number_of_item]
+    value = item[0]
+    key = dates[number_of_item][0]
+    print value
+    new_data[key] = value
     
-print new_data
+print new_data.keys()
