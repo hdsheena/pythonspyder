@@ -64,9 +64,14 @@ def make_new_dictionary():
         new_data.setdefault(key,[]).append(new_value)
     
 def thread_to_file(value, key):
+    #This doesn't work if the filename has a / in it without the if statement
+    if key.find("/"):
+        keysplit = key.split("/")
+        key = " ".join(keysplit)
     filename = str(key)+".json"
     with open(filename, 'w') as outfile:
         json.dump(value, outfile)
+        
 make_new_dictionary()
 for key in new_data.keys():
     thread = new_data[key]
