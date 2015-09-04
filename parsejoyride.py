@@ -9,6 +9,9 @@ just_data = data['data']
 new_data = {}
 
 def make_list_better(list_item):
+    """
+    The unicode stuff makes me crazy. This fixes it
+    """
     print list_item[0][0]
     better = unidecode(list_item)
     print list_item[0]
@@ -21,6 +24,10 @@ def make_list_better(list_item):
 dates = []
 content = []
 def create_lists_of_content_and_meta(just_data):
+    """This takes the data section from importio's output file, and
+    makes it into some nice useable lists. They're in order, and this is 
+    important later.
+    """
     for item in just_data:
         if "test" in item.keys():
             to_dates = item['test']
@@ -59,8 +66,6 @@ def make_nice_lists(dates_list):
 
 
 
-#print list_of_threads
-    
 def make_new_dictionary(new_content, new_data):
     for item in new_content:
         new_value = {}
@@ -85,14 +90,12 @@ def dictionary_to_files(new_data):
         thread = new_data[key]
         thread_to_file(thread, key)
     
+    
+#Calling all my functions to make things happen
+    
 create_lists_of_content_and_meta(just_data)
 make_content_strings_useable(content)
 make_nice_lists(dates)
 make_new_dictionary(new_content, new_data)
 dictionary_to_files(new_data)
 
-#print dictionary_of_metadata
-    
-print "           " *50
-
-print new_content
