@@ -18,7 +18,7 @@ def put_rows_together():
             content = item['date']
     #new_data[date] = content
 
-put_rows_together()
+#put_rows_together()
 
 dates = []
 content = []
@@ -29,3 +29,11 @@ for item in just_data:
     content.append(item['date'])
     
 print content[0], dates [0]
+
+for item in content:
+    print item
+    number_of_item = content.index(item)
+    print number_of_item
+    new_data[item] = dates[number_of_item]
+    
+print new_data
